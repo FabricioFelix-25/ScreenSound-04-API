@@ -10,17 +10,22 @@ using (HttpClient client = new HttpClient())
         string resposta = await client.GetStringAsync("https://guilhermeonrails.github.io/api-csharp-songs/songs.json");
         Console.WriteLine(resposta);
         var musicas = JsonSerializer.Deserialize<List<Musica>>(resposta);
+
+        LinqFilter.FiltrarMusicasEmCsharp(musicas);
+
+
+        //musicas[0].ExibirDetalhesDaMusica();
         //LinqFilter.FiltrarTodosOsGenerosMusicais(musicas);
         //LinqOrder.ExibirListaDeArtistaOrdenados(musicas);
         //LinqFilter.FiltrarArtistasPorGeneroMusical(musicas, "rock");
-        
 
-        var musicasPreferidasFabricio = new MusicasPreferidas("Fabricio");
-        musicasPreferidasFabricio.AdicionarMusicasFavoritas(musicas[55]);
-        musicasPreferidasFabricio.AdicionarMusicasFavoritas(musicas[666]);
 
-        musicasPreferidasFabricio.ExibirMusicasFavoritas();
-        musicasPreferidasFabricio.GerarArquivoJson();
+        // var musicasPreferidasFabricio = new MusicasPreferidas("Fabricio");
+        // musicasPreferidasFabricio.AdicionarMusicasFavoritas(musicas[55]);
+        // musicasPreferidasFabricio.AdicionarMusicasFavoritas(musicas[666]);
+        //
+        // musicasPreferidasFabricio.ExibirMusicasFavoritas();
+        // musicasPreferidasFabricio.GerarArquivoJson();
 
 
 
